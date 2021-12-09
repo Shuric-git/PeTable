@@ -1,0 +1,19 @@
+{
+    "sega": { 
+        "megadrive": {
+            "console": "Mega drive",
+            "release": "1987",
+            "origin": "Japan",
+            "sold": "500000",
+            "games": "573"
+        },
+        "gamegear": {
+            "console": "Game Gear",
+            "release": "1991",
+            "origin": "Japan",
+            "sold": "100000",
+            "games": "313"
+        }
+    }
+
+}
