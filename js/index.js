@@ -9,75 +9,67 @@ let infoListItem = document.querySelector('info_list-item')
 
 mainMenu.addEventListener('click', function (ev) {
     ev.preventDefault();
+    let clicked = ev.target.id
+    let mainMenuItem = document.querySelectorAll('.main_menu-item')
+    for (let i = 0; i < mainMenuItem.length; i++ ) {
+        if (mainMenuItem[i].classList.contains('active')) {
+        mainMenuItem[i].classList.remove('active')
+        }
+    }
     if (ev.target.tagName === 'LI') {
         ev.target.classList.toggle('active')
     }
     fetch('../data.json')
         .then(function(response) {
-            // let responseJson = JSON.stringify(response.status)
             return response.json();
         })
         .then(function (response) {
             while (infoContainer.firstChild) {
                 infoContainer.firstChild.remove();
           }
-            for (let prop in response.sega) {
+            function createTree(infoContainer, response) {
                 const ul = document.createElement('ul')
                 ul.className = 'info_list'
-                for (let key in response.sega[prop]) {
-                    const li = document.createElement('li');
-                    li.className = 'info_list-item'
-                    const text = document.createTextNode(response.sega[prop][key]);
-                    li.prepend(text);
-                    infoContainer.append(ul)
-                    ul.append(li)
-                    // console.log(response.sega[prop][key])
-                }
-
+                const li = document.createElement('li');
+                li.className = 'info_list-item'
+                for (let prop in response) {
+                if (prop === clicked) {
+                    let companies = response[prop]
+                    for (let key in companies) {
+                    const ul = document.createElement('ul')
+                    ul.className = 'info_list'
+                        let consoles = companies[key]
+                        for ( let i in consoles) {
+                            const li = document.createElement('li');
+                            li.className = 'info_list-item'
+                            const text = document.createTextNode(consoles[i]);
+                            li.prepend(text);
+                            infoContainer.append(ul)
+                            ul.append(li)
+                        }
+                    }
+                }   
             }
-
-        })
-    });
+        }
+        createTree(infoContainer, response)
+    })
+});
 
 searchButton.addEventListener('click', function (ev) {
     ev.preventDefault();
-    let infoListItemCollection = document.querySelectorAll('.info_list-item')
-    let infoListCollection = document.querySelectorAll('.info_list')
-    infoListCollection.forEach( (infoListCollection) => {
-        infoListItemCollection.forEach( (infoListItemCollection) => {
-            if (search.value === infoListItemCollection.innerHTML) {
-                // infoListCollection.style.border = '1px solid red'
-                infoListCollection.classList.toggle('searched')
-            }
-        });
-    })
-
+    let infoListItem = document.querySelectorAll('.info_list-item')
+    for (let i = 0; i < infoListItem.length; i++ ) {
+        if (infoListItem[i].classList.contains('searched')) {
+        infoListItem[i].classList.remove('searched')
+        }
+    }
+    for (let i of infoListItem) { console.log(i.innerHTML)
+        let searchValue = search.value.toLowerCase()
+        let searchedString = i.innerHTML.toLowerCase()
+        if (searchValue === searchedString || searchedString.indexOf(searchValue) != -1) {
+            i.classList.toggle('searched')
+            i.scrollIntoView()
+        }
+    }
 })
-    
-// load_button.addEventListener('click', function (ev) {
-//     ev.preventDefault();
 
-
-//     // fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
-//     // .then(response => response.json())
-//     // .then(commits => alert(commits[0].author.login));
-    
-//     fetch('http://192.168.0.34:8080/data.json')
-//         .then(function(response) {
-//             console.log(response)
-//             // let responseJson = JSON.stringify(response.status)
-//             console.log(response.status) 
-//             return response.json();
-//         })
-//         .then(function(response) {
-//             document.querySelector('.project')
-//             .innerHTML = response.project;
-//             document.querySelector('.course')
-//             .innerHTML = response.course;
-//             document.querySelector('.module')
-//             .innerHTML = response.module;
-//             document.querySelector('.teacher')
-//             .innerHTML = response.teacher;
-//         })
-          
-// });

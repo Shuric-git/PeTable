@@ -1,4 +1,13 @@
-{
+{   
+    "magnavox": { 
+        "magnavox Odyssey": {
+            "console": "Magnavox",
+            "release": "1972",
+            "origin": "USA",
+            "sold": "350000",
+            "games": "28"
+        }
+    },
     "sega": { 
         "megadrive": {
             "console": "Mega drive",
@@ -14,6 +23,56 @@
             "sold": "100000",
             "games": "313"
         }
+    },
+    "nintendo": { 
+        "color tv game 6": {
+            "console": "Color TV Game 6",
+            "release": "1977",
+            "origin": "Japan",
+            "sold": "1600000",
+            "games": "1"
+        },
+        "nintendo entertainment system": {
+            "console": "Nintendo entertainment system/Famicom",
+            "release": "1983",
+            "origin": "Japan",
+            "sold": "61910000",
+            "games": "717"
+        },
+        "super nintendo entertainment system": {
+            "console": "Super Nintendo Entertainment System/Super Famicom",
+            "release": "2001",
+            "origin": "Japan",
+            "sold": "49000000",
+            "games": "1447"
+        },
+        "game cube": {
+            "console": "Game Cube",
+            "release": "2001",
+            "origin": "Japan",
+            "sold": "21740000",
+            "games": "653"
+        },
+        "virtual boy": {
+            "console": "Virtual Boy",
+            "release": "1995",
+            "origin": "Japan",
+            "sold": "770000",
+            "games": "22"
+        },
+        "game & Watch": {
+            "console": "Game & Watch",
+            "release": "1980",
+            "origin": "Japan",
+            "sold": "???",
+            "games": "60"
+        },
+        "game boy": {
+            "console": "Game Boy",
+            "release": "1989",
+            "origin": "Japan",
+            "sold": "118690000",
+            "games": "1046"
+        }
     }
-
 }
